@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Du Chama • Nhà Trẻ Mèo Lọ</title>
+    <meta name="description" content="Thông tin chi tiết về Du Chama.">
+	<link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="assets/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/assets/favicon/ms-icon-144x144.png">
+    <meta property="og:image" content="https://ntmeogiat.com/assets/logo.png">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#5865F2">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-blurple: #5865F2;
+            --brand-pink: #ff758c;
+            --bg-dark: #0a0a0f;
+            --bg-glass: rgba(20, 20, 28, 0.65);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --border-highlight: rgba(255, 255, 255, 0.25);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glow-primary: rgba(255, 117, 140, 0.4); /* Glow Hồng cho Du Chama */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 117, 140, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(88, 101, 242, 0.1), transparent 40%),
+                linear-gradient(rgba(10, 10, 15, 0.8), rgba(10, 10, 15, 0.85)), 
+                url('assets/banner.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .header-title { font-family: 'Outfit', sans-serif; }
+
+        .header-wrapper {
+            position: sticky; top: 20px; z-index: 1000;
+            display: flex; justify-content: center; padding: 0 20px; pointer-events: none;
+        }
+        .header {
+            pointer-events: auto; width: 100%; max-width: 1000px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 25px; background: rgba(15, 15, 20, 0.5);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-glass); border-radius: 50px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .logo-group { display: flex; align-items: center; gap: 15px; text-decoration: none; color: inherit; transition: 0.3s;}
+        .logo-group:hover { transform: scale(1.05); }
+        .logo-img { width: 42px; height: 42px; filter: drop-shadow(0 0 10px rgba(255, 117, 140, 0.5)); }
+        .header-title { font-size: 20px; font-weight: 800; letter-spacing: 0.5px; }
+
+        .hamburger { cursor: pointer; width: 28px; height: 22px; display: flex; flex-direction: column; justify-content: space-between; }
+        .hamburger div { width: 100%; height: 3px; background: #fff; border-radius: 3px; transition: 0.4s; transform-origin: left; }
+        .hamburger.active div:nth-child(1) { transform: rotate(45deg); }
+        .hamburger.active div:nth-child(2) { opacity: 0; transform: translateX(20px); }
+        .hamburger.active div:nth-child(3) { transform: rotate(-45deg); }
+
+        .menu-box {
+            position: fixed; top: 0; right: -350px; width: 320px; height: 100vh;
+            background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(30px);
+            padding: 100px 25px 40px; display: flex; flex-direction: column; gap: 12px;
+            transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            border-left: 1px solid var(--border-glass); z-index: 1001; box-shadow: -20px 0 50px rgba(0,0,0,0.8); overflow-y: auto;
+        }
+        .menu-box.show { right: 0; }
+        .menu-box a {
+            color: var(--text-main); text-decoration: none; font-size: 16px; font-weight: 600;
+            padding: 14px 18px; border-radius: 14px; transition: 0.3s; display: flex; align-items: center; gap: 15px;
+            background: rgba(255,255,255,0.02); border: 1px solid transparent;
+        }
+        .menu-box a:hover {
+            background: rgba(255,255,255,0.08); border-color: var(--border-highlight);
+            color: #fff; transform: translateX(8px);
+        }
+        .menu-box a i { width: 25px; text-align: center; color: var(--brand-pink); font-size: 18px; }
+        
+        .menu-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+            z-index: 1000; opacity: 0; visibility: hidden; transition: 0.4s;
+        }
+        .menu-overlay.show { opacity: 1; visibility: visible; }
+
+        .main-content {
+            flex-grow: 1; padding: 40px 20px 80px; display: flex; flex-direction: column; align-items: center; z-index: 2;
+        }
+        .profile-container {
+            max-width: 900px; width: 100%; animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .bio-card {
+            background: var(--bg-glass); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-glass); border-radius: 35px;
+            padding: 50px; text-align: center; margin-bottom: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .avatar-box {
+            width: 170px; height: 170px; margin: 0 auto 30px auto;
+            border-radius: 50%; border: 4px solid var(--brand-pink);
+            padding: 5px; box-shadow: 0 0 35px var(--glow-primary);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255,255,255,0.05);
+        }
+        .avatar-box:hover { transform: scale(1.08); box-shadow: 0 0 50px rgba(255, 117, 140, 0.6); }
+        .avatar-box img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+        .bio-quote { 
+            font-family: 'Outfit'; font-size: 24px; font-style: italic; font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--brand-pink) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 25px; line-height: 1.4;
+        }
+        .bio-text { font-size: 16px; line-height: 1.8; color: #cbd5e1; margin-bottom: 25px; font-weight: 500; }
+
+        .info-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; width: 100%;
+        }
+        
+        .card {
+            background: var(--bg-glass); backdrop-filter: blur(24px);
+            border: 1px solid var(--border-glass); border-radius: 24px;
+            padding: 30px; transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column;
+        }
+        .card:hover { 
+            transform: translateY(-8px); border-color: var(--brand-pink); 
+            box-shadow: 0 20px 40px var(--glow-primary);
+        }
+        
+        .card h3 { 
+            font-size: 22px; margin-bottom: 25px; padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 10px;
+        }
+        .card h3 i { color: var(--brand-pink); }
+
+        .link-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .link-item {
+            text-decoration: none; color: #cbd5e1; display: flex; align-items: center; gap: 15px; 
+            transition: 0.3s; font-weight: 600; padding: 10px 15px; border-radius: 12px;
+            background: rgba(255,255,255,0.03); border: 1px solid transparent;
+        }
+        .link-item:hover { 
+            color: #fff; background: rgba(255, 117, 140, 0.1); 
+            border-color: rgba(255, 117, 140, 0.3); transform: translateX(5px); 
+        }
+        .link-item i { width: 24px; text-align: center; color: var(--brand-pink); font-size: 18px; }
+
+        /* Nút Hội Viên Mới */
+        .btn-member {
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            background: linear-gradient(135deg, #e62117 0%, #ff4c4c 100%);
+            color: #fff; text-decoration: none; padding: 16px 30px; border-radius: 18px; 
+            font-weight: 800; font-family: 'Outfit'; font-size: 18px; transition: 0.4s;
+            margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 25px rgba(230, 33, 23, 0.4); text-transform: uppercase; letter-spacing: 1px;
+            width: 100%;
+        }
+        .btn-member:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 35px rgba(230, 33, 23, 0.6); 
+            color: #fff;
+        }
+        .btn-member i { 
+            font-size: 24px; color: #ffdb4d; 
+            filter: drop-shadow(0 0 5px rgba(255, 219, 77, 0.8)); 
+        }
+
+        .donate-wrapper { display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch; margin-top: 10px;}
+        .btn-gank {
+            flex: 1; min-width: 200px; display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); color: #fff; text-decoration: none;
+            padding: 15px 25px; border-radius: 15px; font-weight: 700; font-family: 'Outfit'; font-size: 18px;
+            transition: 0.4s; box-shadow: 0 10px 20px rgba(255, 117, 140, 0.4);
+        }
+        .btn-gank:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(255, 117, 140, 0.6); color: #fff;}
+        
+        .donate-bank {
+            flex: 1; min-width: 200px; background: rgba(0,0,0,0.3); border: 1px dashed var(--border-glass);
+            border-radius: 15px; padding: 15px 20px; text-align: center; display: flex; flex-direction: column; justify-content: center;
+        }
+        .donate-bank p { font-size: 13px; color: #aaa; margin-bottom: 5px; font-weight: 600; }
+        .bank-info { font-family: monospace; font-size: 20px; color: #03fc0f; font-weight: bold; letter-spacing: 2px;}
+
+        .motto-box {
+            text-align: center; margin-top: 35px; padding: 25px;
+            background: rgba(255, 117, 140, 0.05); border: 1px solid rgba(255, 117, 140, 0.2);
+            border-radius: 24px; font-weight: 700; font-family: 'Outfit';
+        }
+        .motto-box p:first-child { font-size: 18px; color: #fff;}
+        .motto-box p:last-child { color: var(--brand-pink); font-size: 15px; margin-top: 10px; }
+
+        @media (max-width: 768px) {
+            .bio-card { padding: 40px 25px; border-radius: 30px; }
+            .avatar-box { width: 140px; height: 140px; }
+            .bio-quote { font-size: 20px; }
+            .card { padding: 25px 20px; }
+        }
+    </style>
+</head>
+<body>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ========================================= */
+/* VARIABLES & RESET                         */
+/* ========================================= */
+:root {
+    --brand-blurple: #5865F2;
+    --accent-yellow: #ffdb4d;
+    --danger-red: #ff4c4c;
+    --bg-dark: #0a0a0f;
+    --bg-glass: rgba(20, 20, 28, 0.65);
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --glow-cyan: rgba(0, 198, 255, 0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ========================================= */
+/* PAGE TRANSITION OVERLAY (CENTERED)        */
+/* ========================================= */
+#page-transition {
+    position: fixed;
+    inset: 0;
+    /* Thiết lập nền mờ bao phủ toàn màn hình */
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    /* Sử dụng Flexbox để căn giữa mọi thứ bên trong */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999; /* Đảm bảo luôn nằm trên cùng */
+    
+    /* Trạng thái ẩn mặc định */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#page-transition.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ========================================= */
+/* BEAUTIFUL PREMIUM LOADER (NEW)            */
+/* ========================================= */
+.beautiful-loader {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px; /* Khoảng cách với box cảnh báo nếu hiện cùng lúc */
+}
+
+.beautiful-loader div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* Tạo hiệu ứng dải màu gradient fading */
+    background: conic-gradient(from 0deg, transparent 40%, var(--brand-blurple) 80%, #fff 100%);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #fff calc(100% - 5px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #fff calc(100% - 5px));
+    
+    animation: spinSmooth 1s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(88, 101, 242, 0.6));
+}
+
+/* Tạo thêm một vòng xoay phụ ngược chiều để tăng độ sâu */
+.beautiful-loader::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 30%, var(--accent-yellow) 70%, #fff 100%);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #fff calc(100% - 3px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #fff calc(100% - 3px));
+    animation: spinSmooth 1.5s linear infinite reverse;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 5px rgba(255, 219, 77, 0.4));
+}
+
+@keyframes spinSmooth {
+    to { transform: rotate(360deg); }
+}
+
+/* ========================================= */
+/* EXTERNAL WARNING BOX (CENTERED MODAL)     */
+/* ========================================= */
+.external-box {
+    display: none; /* Ẩn mặc định */
+    max-width: 450px;
+    width: 90%;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 30px;
+    padding: 40px 30px;
+    color: var(--text-main);
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+    
+    /* Đảm bảo hộp thoại không bị dính vào Loader khi hiện cùng lúc */
+    position: relative; 
+}
+
+.external-box.active {
+    display: block;
+    /* Hiệu ứng xuất hiện nhẹ nhàng */
+    animation: popUpCard 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes popUpCard {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.external-box h3 {
+    margin: 0 0 15px;
+    font-size: 26px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    color: var(--accent-yellow);
+    text-shadow: 0 0 15px rgba(255, 219, 77, 0.4);
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+
+.external-box .ext-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.5;
+}
+
+/* Khung hiển thị URL kiểu Terminal/Code chìm */
+.external-box #external-url {
+    font-size: 13px;
+    color: #fff;
+    word-break: break-all;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    font-family: 'Consolas', monospace;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.external-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.external-actions button {
+    flex: 1;
+    padding: 15px;
+    border-radius: 16px;
+    border: none;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Nút Hủy (Chìm) */
+.external-cancel {
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.external-cancel:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Nút Đi tiếp (Nổi bật Gradient) */
+.external-go {
+    background: linear-gradient(135deg, var(--brand-blurple) 0%, #4752c4 100%);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
+}
+
+.external-go:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(88, 101, 242, 0.6);
+}
+
+/* ========================================= */
+/* BODY FADE IN ANIMATION (OPTIONAL)        */
+/* ========================================= */
+body.loaded {
+    animation: fadeInPage 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: scale(0.99); }
+    to   { opacity: 1; transform: scale(1); }
+}
+</style>
+
+<div id="page-transition">
+    <div class="beautiful-loader" id="loader-spinner">
+        <div></div>
+    </div>
+    
+    <div class="external-box" id="external-box">
+        <h3><i class="fas fa-shield-alt"></i> Cảnh báo chuyển hướng</h3>
+        <div class="ext-desc">Bạn đang rời khỏi hệ thống <b>Nhà Trẻ Mèo Lọ</b> để đến một liên kết bên ngoài. Hãy chắc chắn rằng bạn tin tưởng liên kết này:</div>
+        
+        <p id="external-url"></p>
+        
+        <div class="external-actions">
+            <button class="external-cancel"><i class="fas fa-times"></i> Hủy, ở lại</button>
+            <button class="external-go">Đi tiếp <i class="fas fa-external-link-alt"></i></button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    const transition = document.getElementById("page-transition");
+    const spinner = document.getElementById("loader-spinner");
+    const externalBox = document.getElementById("external-box");
+    const externalUrlText = document.getElementById("external-url");
+    const btnCancel = externalBox.querySelector(".external-cancel");
+    const btnGo = externalBox.querySelector(".external-go");
+    
+    let pendingExternal = null;
+    const origin = location.origin;
+
+    // --- Thêm class loaded cho body để chạy animation hiện trang ---
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+    });
+
+    // --- Hàm đóng lớp nền và hộp thoại ---
+    function closeTransitionAndBox() {
+        externalBox.classList.remove("active");
+        // Đợi animation của box chạy xong (0.6s) rồi mới ẩn nền mờ để tránh giật
+        setTimeout(() => {
+            spinner.style.display = ""; // Hiện lại spinner cho lần sau
+            transition.classList.remove("active");
+            pendingExternal = null;
+        }, 300); // Thường 300ms là đủ để cảm giác mượt mà
+    }
+
+    // --- 1. Xử lý click ra ngoài để thoát ---
+    transition.addEventListener("click", function (e) {
+        // Nếu mục tiêu click chính là lớp nền #page-transition (không phải box hay spinner)
+        if (e.target === transition) {
+            closeTransitionAndBox();
+        }
+    });
+
+    // --- 2. Xử lý click vào các liên kết <a> ---
+    document.addEventListener("click", function (e) {
+        const link = e.target.closest("a");
+        if (!link || !link.href) return;
+        
+        const href = link.href;
+        const target = link.getAttribute("target");
+        
+        // Bỏ qua các loại link đặc biệt
+        if (
+            href.startsWith("#") ||
+            href.startsWith("mailto:") ||
+            href.startsWith("tel:") ||
+            href.startsWith("javascript:") ||
+            target === "_blank" ||
+            e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1
+        ) return;
+        
+        const isExternal = !href.startsWith(origin);
+        
+        e.preventDefault(); // Ngăn trình duyệt chuyển hướng ngay lập tức
+        
+        // Hiện nền mờ
+        transition.classList.add("active");
+        
+        if (isExternal) {
+            // Liên kết ngoài: Hiện Box cảnh báo, ẩn Loader
+            pendingExternal = href;
+            spinner.style.display = "none";
+            externalBox.classList.add("active");
+            externalUrlText.textContent = href;
+        } else {
+            // Liên kết nội bộ: Chỉ hiện Loader rồi chuyển trang
+            externalBox.classList.remove("active"); // Đảm bảo box ẩn
+            spinner.style.display = ""; // Đảm bảo spinner hiện
+            
+            // Tạo độ trễ nhỏ để người dùng thấy hiệu ứng loader mượt hơn trước khi chuyển trang
+            setTimeout(() => {
+                window.location.href = href;
+            }, 500);
+        }
+    });
+
+    // --- 3. Xử lý các nút bấm trong hộp thoại ---
+    btnCancel.onclick = closeTransitionAndBox;
+
+    btnGo.onclick = () => {
+        if (!pendingExternal) return;
+        window.location.href = pendingExternal;
+    };
+
+    // --- 4. Xử lý khi bấm nút Back của trình duyệt ---
+    window.addEventListener("pageshow", (event) => {
+        // Nếu trang được load từ cache (bấm Back) hoặc lớp nền vẫn đang hiện
+        if (event.persisted || transition.classList.contains('active')) {
+            // Ẩn ngay lập tức mà không cần animation để tránh trải nghiệm xấu
+            transition.classList.remove("active");
+            externalBox.classList.remove("active");
+            spinner.style.display = "";
+        }
+    });
+})();
+</script><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<div id="sub-event-popup" class="sub-popup-container">
+    <div class="sub-card">
+        <div class="sub-glow-bg"></div>
+        <button class="close-btn" onclick="closeSubPopup()"><i class="fas fa-times"></i></button>
+        <div class="sub-content">
+            <div class="sub-icon-box">
+                <i class="fas fa-trophy sub-icon"></i>
+            </div>
+            <div class="sub-text-group">
+                <h3 class="sub-title">Road to 100K Subs!</h3>
+                <p class="sub-msg">Cùng giúp Du và K đạt Nút Bạc YouTube nhé!</p>
+            </div>
+        </div>
+        <div class="sub-actions">
+            <a href="https://youtube.com/@DuChama1108?sub_confirmation=1" target="_blank" class="yt-link-btn duchama">
+                <i class="fab fa-youtube"></i> Du Chama
+            </a>
+            <a href="https://youtube.com/@k_chan004?sub_confirmation=1" target="_blank" class="yt-link-btn kchan">
+                <i class="fab fa-youtube"></i> K Chan
+            </a>
+        </div>
+        <div class="sub-progress-bar">
+            <div class="sub-progress"></div>
+        </div>
+    </div>
+</div>
+<style>
+    .sub-popup-container {
+        position: fixed;
+        top: 100px;
+        right: 30px;
+        z-index: 9990;
+        font-family: 'Quicksand', sans-serif;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100px) scale(0.9);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sub-popup-container.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0) scale(1);
+    }
+    .sub-card {
+        width: 360px;
+        background: rgba(15, 15, 20, 0.85);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 76, 76, 0.3);
+        border-radius: 24px;
+        padding: 20px 25px 25px 25px;
+        color: #fff;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 20px rgba(255, 76, 76, 0.15);
+        position: relative;
+        overflow: hidden;
+    }
+    .sub-glow-bg {
+        position: absolute;
+        top: -60px; right: -60px;
+        width: 150px; height: 150px;
+        background: radial-gradient(circle, rgba(255, 76, 76, 0.25) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .sub-content {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+    }
+    .sub-icon-box {
+        width: 55px; height: 55px; flex-shrink: 0;
+        background: linear-gradient(135deg, rgba(255, 76, 76, 0.2), rgba(255, 219, 77, 0.2));
+        border-radius: 16px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 26px;
+        color: #ffdb4d; /* Vàng Nút Bạc/Vàng */
+        border: 1px solid rgba(255, 219, 77, 0.4);
+        box-shadow: inset 0 0 15px rgba(255, 219, 77, 0.1), 0 5px 15px rgba(255, 219, 77, 0.2);
+    }
+    .sub-icon { animation: bounceTrophy 2s infinite ease-in-out; filter: drop-shadow(0 0 5px rgba(255, 219, 77, 0.8));}
+    .sub-text-group { flex: 1; }
+    .sub-title {
+        margin: 0 0 5px 0;
+        font-size: 20px;
+        font-weight: 900;
+        font-family: 'Outfit', sans-serif;
+        background: linear-gradient(90deg, #ffffff 0%, #ffdb4d 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 0.5px;
+    }
+    .sub-msg {
+        margin: 0;
+        font-size: 13px;
+        color: rgba(255,255,255,0.7);
+        font-weight: 600;
+        line-height: 1.4;
+    }
+    .sub-actions {
+        display: flex;
+        gap: 12px;
+        position: relative;
+        z-index: 2;
+    }
+    .yt-link-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 0;
+        border-radius: 14px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 800;
+        font-family: 'Outfit', sans-serif;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid var(--border-glass);
+    }
+    .yt-link-btn i { font-size: 16px; }
+    .yt-link-btn.duchama { background: rgba(255, 117, 140, 0.08); color: #ff758c; border-color: rgba(255, 117, 140, 0.3);}
+    .yt-link-btn.duchama:hover { background: #ff758c; color: #fff; border-color: #ff758c; box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4); transform: translateY(-4px);}
+    .yt-link-btn.kchan { background: rgba(0, 198, 255, 0.08); color: #00c6ff; border-color: rgba(0, 198, 255, 0.3);}
+    .yt-link-btn.kchan:hover { background: #00c6ff; color: #fff; border-color: #00c6ff; box-shadow: 0 8px 20px rgba(0, 198, 255, 0.4); transform: translateY(-4px);}
+    .close-btn {
+        position: absolute;
+        top: 15px; right: 15px;
+        background: rgba(255,255,255,0.05); border: 1px solid transparent;
+        border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+        color: rgba(255,255,255,0.5);
+        cursor: pointer;
+        font-size: 14px;
+        z-index: 10;
+        transition: 0.3s;
+    }
+    .close-btn:hover { color: #fff; background: rgba(255, 76, 76, 0.8); border-color: #ff4c4c; transform: rotate(90deg); box-shadow: 0 0 10px rgba(255, 76, 76, 0.5);}
+    .sub-progress-bar {
+        position: absolute;
+        bottom: 0; left: 0; width: 100%; height: 4px;
+        background: rgba(255,255,255,0.05);
+    }
+    .sub-progress {
+        height: 100%;
+        background: linear-gradient(90deg, #ff4c4c, #ffdb4d);
+        width: 0%;
+        box-shadow: 0 0 10px rgba(255, 76, 76, 0.6);
+    }
+    @keyframes bounceTrophy { 
+        0%, 100% { transform: translateY(0) scale(1); } 
+        50% { transform: translateY(-5px) scale(1.1); } 
+    }
+    @media (max-width: 480px) {
+        .sub-popup-container { 
+            top: 90px; right: 20px; 
+            transform: translateX(50px) scale(0.9); 
+            width: 85vw; max-width: 320px;
+        }
+        .sub-popup-container.show { transform: translateX(0) scale(1); }
+        .sub-card { width: 100%; padding: 20px; }
+        .sub-title { font-size: 18px; }
+        .yt-link-btn { padding: 10px 0; font-size: 13px; }
+    }
+</style>
+<script>
+(function() {
+    const popup = document.getElementById('sub-event-popup');
+    const progress = document.querySelector('.sub-progress');
+    const DURATION = 15000; 
+    let elapsed = 0;
+    let lastTime = 0;
+    let isPaused = false;
+    let animationFrame;
+    popup.addEventListener('mouseenter', () => { isPaused = true; });
+    popup.addEventListener('mouseleave', () => { 
+        isPaused = false; 
+        lastTime = Date.now();
+    });
+    setTimeout(() => {
+        popup.classList.add('show');
+        lastTime = Date.now();
+        runProgress();
+    }, 1500);
+    function runProgress() {
+        if (!popup.classList.contains('show')) return;
+        const now = Date.now();
+        if (!isPaused) {
+            elapsed += (now - lastTime);
+        }
+        lastTime = now;
+        const pct = Math.min((elapsed / DURATION) * 100, 100);
+        if (progress) progress.style.width = pct + '%';
+        if (elapsed < DURATION) {
+            animationFrame = requestAnimationFrame(runProgress);
+        } else {
+            closeSubPopup();
+        }
+    }
+    window.closeSubPopup = function() {
+        cancelAnimationFrame(animationFrame);
+        popup.classList.remove('show');
+        setTimeout(() => {
+            if(popup && popup.parentNode) popup.parentNode.removeChild(popup);
+        }, 600);
+    };
+})();
+</script><script>
+    if (document.cookie.indexOf("ntmg_first_load_done=true") !== -1) {
+        document.documentElement.classList.add('hide-loader-completely');
+    }
+</script>
+<style>
+    html.hide-loader-completely #initial-loader {
+        display: none !important;
+    }
+    #initial-loader {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000000;
+        z-index: 999999;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #initial-loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+    .loader-logo-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .loader-logo {
+        width: 140px;
+        height: 140px;
+        opacity: 0;
+        filter: drop-shadow(0 0 60px rgba(88, 101, 242, 1)) drop-shadow(0 0 30px rgba(88, 101, 242, 0.9));
+        animation: slowZoomInOut 2.2s ease-in-out forwards;
+    }
+    @keyframes slowZoomInOut {
+        0% { 
+            transform: scale(0); 
+            opacity: 0; 
+        }
+        30% { 
+            transform: scale(1); 
+            opacity: 1; 
+        }
+        50% { 
+            transform: scale(1.3); 
+            opacity: 1; 
+        }
+        70% { 
+            transform: scale(1); 
+            opacity: 1; 
+        }
+        100% { 
+            transform: scale(0); 
+            opacity: 0; 
+        }
+    }
+</style>
+<div id="initial-loader">
+    <div class="loader-logo-wrapper">
+        <img src="assets/logo.png" alt="Loading" class="loader-logo">
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const loader = document.getElementById("initial-loader");
+        if (document.cookie.indexOf("ntmg_first_load_done=true") !== -1) {
+            if (loader) loader.remove();
+            return; 
+        }
+        const totalAnimationTime = 2200; 
+        setTimeout(() => {
+            document.cookie = "ntmg_first_load_done=true; path=/";
+            loader.classList.add("hidden");
+            setTimeout(() => loader.remove(), 600);
+        }, totalAnimationTime - 200);
+    });
+</script>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="header-wrapper">
+    <header class="header">
+        <a href="index.html" class="logo-group">
+            <img src="assets/logo.png" alt="Logo" class="logo-img">
+            <span class="header-title">Nhà Trẻ Mèo Lọ</span>
+        </a>
+        <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+    </header>
+</div>
+
+<nav class="menu-box" id="menu">
+    <a href="index.html"><i class="fas fa-home"></i> Trang Chủ</a>
+    <a href="thong-tin.html"><i class="fas fa-info-circle"></i> Thông Tin</a>
+    <a href="luat-le.html"><i class="fas fa-scroll"></i> Luật Lệ</a>
+    <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+    <a href="huong-dan-lien-ket-discord-voi-youtube.html"><i class="fas fa-link"></i> Discord ↔ YouTube</a>
+    <a href="lmao-moment.php.html"><i class="fas fa-grin-squint"></i> Lmao Moment</a>
+	<a href="https://mc.ntmeogiat.com"><i class="fas fa-gamepad"></i> MeoGiatMC Website</a>
+    <hr style="border:0; border-top:1px solid var(--border-glass); margin:10px 0;">
+          <a href="dang-ki.html"><i class="fas fa-user-plus"></i> Đăng Ký</a>
+      <a href="dang-nhap.html"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+    </nav>
+
+<main class="main-content">
+    <div class="profile-container">
+        
+        <div class="bio-card">
+            <div class="avatar-box">
+                <img src="assets/du.jpg" alt="Avatar Du Chama">
+            </div>
+            <div class="bio-quote">「Kiếp trước làm gái alimi cosplay, kiếp này isekai thành máy giặt !!!」</div>
+            <p class="bio-text">
+                Hãng máy giặt O-Moi chúng tôi xin trân trọng thông báo sản phẩm mới nhất, xịn nhất của hãng: <strong>DU-CHAMA</strong>.<br><br>
+                Với sự hiện đại và thân thiện của mình, Du-chama không chỉ biết giặt đồ, mà còn biết hát, biết tâm sự, biết chơi game, đảm bảo sẽ luôn làm các bạn vui vẻ và hạnh phúc nhất. Ngoài ra kèm dịch vụ: cosplay waifu của bạn với hot sale 0 đồng.
+            </p>
+            <div style="font-size: 15px; color: var(--text-muted); font-weight: 600;">
+                Nếu muốn tham gia vào công cuộc làm sạch quần áo cùng chúng tôi, hãy trở thành những bột giặt và nước xả vải tuyệt vời cho Du-chama nhé!!!
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="card">
+                <h3><i class="fas fa-share-alt"></i> Mạng xã hội</h3>
+                <ul class="link-list">
+                    <li><a href="https://www.youtube.com/@DuChama1108" target="_blank" class="link-item"><i class="fab fa-youtube"></i> YouTube Chính Thức</a></li>
+                    <li><a href="https://youtube.com/@duu-chama" target="_blank" class="link-item"><i class="fab fa-youtube"></i> YouTube (Backup)</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61562220454100" target="_blank" class="link-item"><i class="fab fa-facebook"></i> Facebook Cá Nhân</a></li>
+                    <li><a href="https://www.tiktok.com/@banhdaukhongcay" target="_blank" class="link-item"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    <li><a href="https://www.instagram.com/kiww_cheng" target="_blank" class="link-item"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="https://x.com/sakanaichigo_" target="_blank" class="link-item"><i class="fab fa-twitter"></i> Twitter / X</a></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-bullhorn"></i> Kênh thông báo</h3>
+                <ul class="link-list">
+                    <li><a href="https://m.me/j/Aba9QxFwHvsU5KlA" target="_blank" class="link-item"><i class="fas fa-comments"></i> Broadcast 1 (Em iuu🥰)</a></li>
+                    <li><a href="https://m.me/j/Abahmei5m7f3SNhP" target="_blank" class="link-item"><i class="fas fa-paw"></i> Broadcast 2 (Hội khủm bố mèo)</a></li>
+                    <li><a href="https://vt.tiktok.com/ZSHbBSWTjoQSP-2ge3K" target="_blank" class="link-item"><i class="fas fa-door-open"></i> Động của máy giặt</a></li>
+                    <li><a href="https://virtualyoutuber.fandom.com/vi/wiki/Du-chama" target="_blank" class="link-item"><i class="fas fa-book-open"></i> VTuber Wiki Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1;">
+                <h3><i class="fas fa-heart"></i> Ủng hộ Du Chama</h3>
+                
+                <a href="https://www.youtube.com/@DuChama1108/join" target="_blank" class="btn-member">
+                    🍰 Tham gia Hội viên YouTube
+                </a>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <p style="margin-bottom: 12px; font-weight: 600;">Gửi Tip hỗ trợ:</p>
+                        <div class="donate-wrapper" style="margin-top: 0;">
+                            <a href="https://ganknow.com/duchama/tip" target="_blank" class="btn-gank">
+                                <i class="fas fa-coffee"></i> Tip qua Gank
+                            </a>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 250px;" class="donate-bank">
+                        <p>Chuyển khoản trực tiếp (Techcombank)</p>
+                        <div class="bank-info">19071965303011</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="motto-box">
+            <p>CAM KẾT GIẶT SẠCH BỜM SƯ TỬ VÀ CHẢI MƯỢT LÔNG CON BÒ!!!</p>
+            <p>📍 LƯU Ý: CHÚNG TÔI KHÔNG NHẬN GIẶT CÀ VẠT 🍥</p>
+        </div>
+    </div>
+</main>
+
+<footer>© 2026 - Meo-Lo幼稚園</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const menu = document.getElementById('menu');
+const overlay = document.getElementById('menuOverlay');
+
+function toggleMenu() {
+    hamburger.classList.toggle('active');
+    menu.classList.toggle('show');
+    overlay.classList.toggle('show');
+}
+
+hamburger.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
+
+(() => {
+    const ERROR_PAGE = '/error/400.php'; 
+    let isTriggered = false;
+    const trigger400 = async () => {
+        if (isTriggered) return;
+        isTriggered = true;
+        try {
+            const response = await fetch(ERROR_PAGE);
+            const html = await response.text();
+            document.open();
+            document.write(html);
+            document.close();
+        } catch (e) {
+            document.body.innerHTML = '<h1>400 Bad Request</h1>';
+        }
+        throw new Error("400 Bad Request");
+    };
+    window.addEventListener("keydown", (e) => {
+        const key = e.key.toUpperCase();
+        if (
+            key === "F12" ||
+            (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(key)) ||
+            (e.ctrlKey && key === "U")
+        ) {
+            e.preventDefault();
+            trigger400();
+        }
+    });
+    document.addEventListener("contextmenu", e => {
+        e.preventDefault();
+    });
+    setInterval(() => {
+        const start = Date.now();
+        debugger;
+        if (Date.now() - start > 100) {
+            trigger400();
+        }
+    }, 500);
+})();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f33bced2fbedc13',t:'MTc3NzM1NDg4Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
